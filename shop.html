@@ -20,7 +20,7 @@
             line-height: 1.6;
         } 
 
-        /* TOP BRAND HEADER (Matching view-our-work.html layout exactly) */ 
+        /* TOP BRAND HEADER */ 
         .navbar { 
             display: flex; 
             justify-content: flex-start;  
@@ -65,13 +65,13 @@
             flex-direction: column; 
         } 
 
-        /* CAROUSEL CONTAINER */ 
+        /* CAROUSEL & IMAGE CONTAINER */ 
         .product-image-wrapper { 
             position: relative; 
             width: 100%; 
             height: 420px;  
             overflow: hidden; 
-            background-color: #F5F5F5; 
+            background-color: #F9F9F9; 
             margin-bottom: 15px; 
         } 
 
@@ -89,6 +89,14 @@
             object-fit: cover; 
             flex-shrink: 0; 
         } 
+
+        /* Single Image Contain Style for Unzoomed Display */
+        .single-product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain !important;
+            padding: 10px;
+        }
 
         /* Nav Arrows */ 
         .carousel-arrow { 
@@ -324,10 +332,10 @@
                 </div> 
             </div> 
 
-            <!-- PRODUCT 5: ETHNIC TOP (XS ONLY) --> 
+            <!-- PRODUCT 5: ETHNIC TOP (UNZOOMED) --> 
             <div class="product-card"> 
                 <div class="product-image-wrapper"> 
-                    <img src="images/product5.jpeg" alt="Ethnic Top" style="width:100%; height:100%; object-fit:cover;"> 
+                    <img src="images/product5.jpeg" alt="Ethnic Top" class="single-product-img"> 
                 </div> 
                 <div class="product-info"> 
                     <span class="product-title">Ethnic Top</span> 
@@ -341,10 +349,10 @@
                 </div> 
             </div> 
 
-            <!-- PRODUCT 6: ETHNIC TOP (XS ONLY) --> 
+            <!-- PRODUCT 6: ETHNIC TOP (UNZOOMED) --> 
             <div class="product-card"> 
                 <div class="product-image-wrapper"> 
-                    <img src="images/product6.jpeg" alt="Ethnic Top" style="width:100%; height:100%; object-fit:cover;"> 
+                    <img src="images/product6.jpeg" alt="Ethnic Top" class="single-product-img"> 
                 </div> 
                 <div class="product-info"> 
                     <span class="product-title">Ethnic Top</span> 
@@ -358,10 +366,10 @@
                 </div> 
             </div> 
 
-            <!-- PRODUCT 7: ETHNIC TOP (XS ONLY) --> 
+            <!-- PRODUCT 7: ETHNIC TOP (UNZOOMED) --> 
             <div class="product-card"> 
                 <div class="product-image-wrapper"> 
-                    <img src="images/product7.jpeg" alt="Ethnic Top" style="width:100%; height:100%; object-fit:cover;"> 
+                    <img src="images/product7.jpeg" alt="Ethnic Top" class="single-product-img"> 
                 </div> 
                 <div class="product-info"> 
                     <span class="product-title">Ethnic Top</span> 
@@ -375,10 +383,10 @@
                 </div> 
             </div> 
 
-            <!-- PRODUCT 8: ETHNIC TOP (XS ONLY) --> 
+            <!-- PRODUCT 8: ETHNIC TOP (UNZOOMED) --> 
             <div class="product-card"> 
                 <div class="product-image-wrapper"> 
-                    <img src="images/product8.jpeg" alt="Ethnic Top" style="width:100%; height:100%; object-fit:cover;"> 
+                    <img src="images/product8.jpeg" alt="Ethnic Top" class="single-product-img"> 
                 </div> 
                 <div class="product-info"> 
                     <span class="product-title">Ethnic Top</span> 
@@ -395,7 +403,7 @@
             <!-- PRODUCT 9: DENIM JUMPSUIT --> 
             <div class="product-card"> 
                 <div class="product-image-wrapper"> 
-                    <img src="images/product9.jpeg" alt="Denim Jumpsuit" style="width:100%; height:100%; object-fit:cover;"> 
+                    <img src="images/product9.jpeg" alt="Denim Jumpsuit" class="single-product-img"> 
                 </div> 
                 <div class="product-info"> 
                     <span class="product-title">Denim Jumpsuit</span> 
