@@ -1,199 +1,305 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-    <!-- CRITICAL FOR AUTOMATIC MOBILE & TABLET RESPONSIVENESS -->
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Year of 25</title> 
-    
-    <style> 
-        /* 1. RESET & BASE STYLES */
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-        } 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year of 25</title>
+    <style>
+        /* Base Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-        body { 
-            font-family: "Times New Roman", Times, serif; 
-            background-color: #ffffff;  
-            color: #000000; 
-            /* Fluid padding: scales dynamically between mobile (15px) and desktop (50px) */
-            padding: clamp(15px, 4vw, 50px); 
-            line-height: 1.6;
+        body {
+            font-family: "Times New Roman", Times, serif;
+            color: #FFFFFF; /* All text is elegant white */
+            background-color: #C4B39B; /* Premium warm beige background */
+            min-height: 100vh;
+            overflow-y: auto; /* Allows vertical scrolling */
+        }
+
+        /* THREE-COLUMN LAYOUT: Left column is wide enough for text, right column is 4cm border */
+        .three-column-container {
+            display: grid;
+            grid-template-columns: 380px 1fr 160px; /* Left column holds the text, right column is 4cm */
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* ==================== LEFT BEIGE COLUMN (TEXT STARTS OUTSIDE VIDEO) ==================== */
+        .left-edge-strip {
+            min-height: 100vh;
+            background-color: #C4B39B; /* Solid beige background - completely outside video */
+            padding: 50px 35px;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
-        } 
-
-        main {
-            flex: 1;
+            justify-content: flex-start;
+            z-index: 3; /* Placed over video boundaries */
         }
 
-        /* 2. RESPONSIVE NAVIGATION BAR */
-        .navbar { 
-            display: flex; 
-            justify-content: space-between;  
-            align-items: center; 
-            width: 100%; 
-            margin-bottom: clamp(30px, 5vw, 60px); 
-            flex-wrap: wrap; 
-            gap: 20px;
-        } 
+        .brand-name {
+            font-size: 3.4rem; /* Bold, large title */
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-decoration: none;
+            color: #FFFFFF;
+            display: block;
+            margin-bottom: 25px;
+            word-wrap: break-word;
+        }
 
-        .brand-name { 
-            font-size: clamp(1.5rem, 4vw, 2.2rem);  
-            text-transform: uppercase; 
-            letter-spacing: clamp(3px, 1vw, 6px); 
-            font-weight: normal; 
-            text-decoration: none; 
-            color: #000000; 
-        } 
-
-        .right-links { 
-            display: flex; 
-            gap: clamp(15px, 3vw, 40px);  
-            flex-wrap: wrap;
-        } 
-
-        .nav-topic { 
-            font-size: clamp(0.85rem, 1.5vw, 1.1rem); 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            cursor: pointer; 
-            text-decoration: none; 
-            color: #555555; 
-            transition: color 0.3s; 
-        } 
-
-        .nav-topic:hover, .active-nav { 
-            color: #000000; 
-            font-weight: bold; 
-        } 
-
-        /* 3. HERO MEDIA SECTION (HERO VIDEO / IMAGE) */
-        .hero-container {
+        .left-middle-content {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
             width: 100%;
-            max-width: 1200px;
-            margin: 0 auto clamp(40px, 6vw, 80px) auto;
+        }
+
+        .intro-text {
+            font-size: 1.25rem; 
+            line-height: 1.6;
+            color: #FFFFFF;
+        }
+
+        /* Services Offered List */
+        .homepage-services {
+            width: 100%;
+        }
+
+        .services-title {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            font-weight: normal;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            padding-bottom: 6px;
+        }
+
+        .services-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .services-list li {
+            font-size: 1.15rem; 
+            letter-spacing: 1px;
+            color: #FFFFFF;
+        }
+
+        /* ==================== MIDDLE COLUMN (VIDEO AREA ONLY) ==================== */
+        .middle-video-column {
+            grid-column: 2; /* Sits cleanly in the middle track */
+            min-height: 100vh;
+            width: 100%;
             position: relative;
             overflow: hidden;
-            background-color: #f9f9f9;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .hero-media {
-            width: 100%;
-            height: auto;
-            max-height: 70vh; /* Prevents video from taking up more than 70% of screen height */
-            object-fit: cover;
-            display: block;
-        }
-
-        /* 4. INTRO / WELCOME TEXT */
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto clamp(30px, 5vw, 60px) auto;
-            padding: 0 10px;
-        }
-
-        .hero-title {
-            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
-            font-weight: normal;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(0.95rem, 2vw, 1.15rem);
-            color: #555555;
-            letter-spacing: 1px;
-            margin-bottom: 25px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 12px 30px;
             background-color: #000000;
-            color: #ffffff;
-            text-decoration: none;
+            z-index: 1;
+        }
+
+        .middle-video-column video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Video stretches fully vertically and horizontally */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* ==================== RIGHT BEIGE COLUMN (4CM BORDER WITH LINKS & CONTACTS) ==================== */
+        .right-edge-strip {
+            min-height: 100vh;
+            background-color: #C4B39B; /* Solid beige 4cm border */
+            padding: 50px 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+            text-align: right;
+            z-index: 3;
+        }
+
+        /* Navigation Links (On the Right Edge) */
+        .right-links {
+            display: flex;
+            flex-direction: column; /* Stacked vertically to cleanly fit inside the right strip width */
+            gap: 20px; 
+            align-items: flex-end;
+            width: 100%;
+            padding-top: 15px;
+        }
+
+        .nav-topic {
+            font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-size: 0.9rem;
-            transition: background-color 0.3s, transform 0.2s;
+            text-decoration: none;
+            color: #FFFFFF;
+            transition: opacity 0.3s;
+            white-space: nowrap;
         }
 
-        .cta-button:hover {
-            background-color: #333333;
-            transform: translateY(-2px);
+        .nav-topic:hover {
+            opacity: 0.7;
         }
 
-        /* 5. FOOTER */
-        footer {
-            text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid #eeeeee;
-            font-size: 0.85rem;
-            color: #777777;
+        /* ==================== FOOTERS / CONTACT CONTAINER (On Right Edge Bottom) ==================== */
+        .footer-right-container {
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            padding-top: 25px;
+            font-size: 1.05rem;
+            line-height: 1.6;
             letter-spacing: 1px;
-            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px; 
         }
 
-        /* 6. MOBILE SPECIFIC OVERRIDES */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                text-align: center;
-                justify-content: center;
-                gap: 15px;
+        .contact-label {
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        /* RESPONSIVE MOBILE & TABLET ADJUSTMENTS */
+        @media (max-width: 1024px) {
+            .three-column-container {
+                grid-template-columns: 1fr; /* Stack into 1 clean vertical column */
+                min-height: auto;
+            }
+
+            /* 1. Header & Text Section at top */
+            .left-edge-strip {
+                min-height: auto;
+                padding: 40px 20px 25px 20px;
+            }
+
+            .brand-name {
+                font-size: 2.2rem;
+                letter-spacing: 4px;
+                margin-bottom: 20px;
+            }
+
+            .intro-text {
+                font-size: 1.1rem;
+            }
+
+            .left-middle-content {
+                gap: 25px;
+            }
+
+            /* 2. Video section in middle */
+            .middle-video-column {
+                grid-column: 1;
+                height: 50vh;
+                min-height: 350px;
+            }
+
+            .middle-video-column video {
+                position: relative;
+            }
+
+            /* 3. Navigation Links & Contact details at bottom */
+            .right-edge-strip {
+                min-height: auto;
+                padding: 35px 20px 40px 20px;
+                align-items: flex-start;
+                text-align: left;
             }
 
             .right-links {
-                justify-content: center;
+                align-items: flex-start;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 15px;
+                padding-top: 0;
+                margin-bottom: 25px;
             }
 
-            .hero-media {
-                max-height: 50vh; /* Slightly smaller height on phones for better scroll experience */
+            .nav-topic {
+                font-size: 0.95rem;
+            }
+
+            .footer-right-container {
+                text-align: left;
             }
         }
-    </style> 
-</head> 
-<body> 
+    </style>
+</head>
+<body>
 
-    <!-- NAVIGATION -->
-    <nav class="navbar"> 
-        <a href="index.html" class="brand-name">Year of 25</a> 
-        <div class="right-links"> 
-            <a href="services.html" class="nav-topic">Our Services</a> 
-            <a href="view-our-work.html" class="nav-topic">View Our Work</a> 
-            <a href="shop.html" class="nav-topic">Shop</a> 
-        </div> 
-    </nav> 
+    <div class="three-column-container">
+        
+        <!-- PART 1: LEFT BEIGE COLUMN (Text starts outside the video) -->
+        <div class="left-edge-strip">
+            <!-- Brand Name (Bold and Large) -->
+            <a href="index.html" class="brand-name">Year of 25</a>
+            
+            <!-- Intro Text & Services -->
+            <div class="left-middle-content">
+                <p class="intro-text">
+                    "Year of 25" represents more than just clothing; it's a lifestyle brand that celebrates the journey of self-discovery and personal transformation. The brand's identity is rooted in the idea that age 25 is a pivotal year in many people's lives. It's an age when individuals often experience significant changes, make important decisions, and embark on new adventures.
+                </p>
 
-    <!-- MAIN HERO CONTENT -->
-    <main>
-        <div class="hero-container">
-            <!-- Video Hero Banner -->
-            <video class="hero-media" autoplay loop muted playsinline poster="images/bg1.jpeg">
+                <section class="homepage-services">
+                    <h2 class="services-title">Services We Offer</h2>
+                    <ul class="services-list">
+                        <li>Outfit Customization</li>
+                        <li>Fashion Consultation</li>
+                        <li>Rent Your Outfit</li>
+                        <li>Bulk Orders</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <!-- PART 2: MIDDLE COLUMN (VIDEO ENTIRELY) -->
+        <div class="middle-video-column">
+            <video autoplay loop muted playsinline>
                 <source src="images/fashion-video.mp4" type="video/mp4">
-                <!-- Fallback image if video fails to load or play -->
-                <img src="images/bg1.jpeg" alt="Year of 25 Banner" class="hero-media">
+                Your browser does not support the video tag.
             </video>
         </div>
 
-        <div class="hero-content">
-            <h1 class="hero-title">Timeless Design & Studio</h1>
-            <p class="hero-subtitle">Exploring modern aesthetics, curated collections, and creative direction.</p>
-            <a href="shop.html" class="cta-button">Explore Collection</a>
+        <!-- PART 3: RIGHT BEIGE COLUMN (Links & Consolidated Contact details on bottom) -->
+        <div class="right-edge-strip">
+            <!-- Top: Navigation Links -->
+            <nav class="right-links">
+                <a href="services.html" class="nav-topic">Our Services</a>
+                <a href="view-our-work.html" class="nav-topic">View Our Work</a>
+                <a href="shop.html" class="nav-topic">Shop</a>
+            </nav>
+
+            <!-- Bottom: Contacts stacked above Shop Address -->
+            <div class="footer-right-container">
+                <!-- Contact Block -->
+                <div class="contact-block">
+                    <span class="contact-label">Our Contact</span>
+                    <div>yearoftwentyfive@gmail.com</div>
+                    
+                    <span class="contact-label" style="margin-top: 10px;">Phone Number</span>
+                    <div>+91 9955527562</div>
+                </div>
+
+                <!-- Shop Address -->
+                <div class="address-block">
+                    <span class="contact-label">Shop Address</span>
+                    <div>Year of 25 Design Studio Middle Lane, Dangratoli, Ranchi - 834001</div>
+                </div>
+            </div>
         </div>
-    </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; Year of 25. All Rights Reserved.</p>
-    </footer>
+    </div>
 
-</body> 
+</body>
 </html>
