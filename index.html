@@ -14,34 +14,34 @@
 
         body {
             font-family: "Times New Roman", Times, serif;
-            color: #FFFFFF; /* All text is elegant white */
-            background-color: #C4B39B; /* Premium warm beige background */
+            color: #FFFFFF;
+            background-color: #C4B39B;
             min-height: 100vh;
-            overflow-y: auto; /* Allows vertical scrolling */
+            overflow-y: auto;
         }
 
-        /* THREE-COLUMN LAYOUT: Left column is wide enough for text, right column is 4cm border */
+        /* THREE-COLUMN LAYOUT */
         .three-column-container {
             display: grid;
-            grid-template-columns: 380px 1fr 160px; /* Left column holds the text, right column is 4cm */
+            grid-template-columns: 380px 1fr 220px;
             width: 100%;
             min-height: 100vh;
             position: relative;
         }
 
-        /* ==================== LEFT BEIGE COLUMN (TEXT STARTS OUTSIDE VIDEO) ==================== */
+        /* ==================== LEFT BEIGE COLUMN ==================== */
         .left-edge-strip {
             min-height: 100vh;
-            background-color: #C4B39B; /* Solid beige background - completely outside video */
+            background-color: #C4B39B;
             padding: 50px 35px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            z-index: 3; /* Placed over video boundaries */
+            z-index: 3;
         }
 
         .brand-name {
-            font-size: 3.4rem; /* Bold, large title */
+            font-size: 3.4rem;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 8px;
@@ -65,7 +65,6 @@
             color: #FFFFFF;
         }
 
-        /* Services Offered List */
         .homepage-services {
             width: 100%;
         }
@@ -93,9 +92,9 @@
             color: #FFFFFF;
         }
 
-        /* ==================== MIDDLE COLUMN (VIDEO AREA ONLY) ==================== */
+        /* ==================== MIDDLE COLUMN (VIDEO AREA) ==================== */
         .middle-video-column {
-            grid-column: 2; /* Sits cleanly in the middle track */
+            grid-column: 2;
             min-height: 100vh;
             width: 100%;
             position: relative;
@@ -107,16 +106,16 @@
         .middle-video-column video {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Video stretches fully vertically and horizontally */
+            object-fit: cover;
             position: absolute;
             top: 0;
             left: 0;
         }
 
-        /* ==================== RIGHT BEIGE COLUMN (4CM BORDER WITH LINKS & CONTACTS) ==================== */
+        /* ==================== RIGHT BEIGE COLUMN (LINKS, ADDRESS & CONTACTS) ==================== */
         .right-edge-strip {
             min-height: 100vh;
-            background-color: #C4B39B; /* Solid beige 4cm border */
+            background-color: #C4B39B;
             padding: 50px 25px;
             display: flex;
             flex-direction: column;
@@ -126,10 +125,9 @@
             z-index: 3;
         }
 
-        /* Navigation Links (On the Right Edge) */
         .right-links {
             display: flex;
-            flex-direction: column; /* Stacked vertically to cleanly fit inside the right strip width */
+            flex-direction: column;
             gap: 20px; 
             align-items: flex-end;
             width: 100%;
@@ -150,12 +148,11 @@
             opacity: 0.7;
         }
 
-        /* ==================== FOOTERS / CONTACT CONTAINER (On Right Edge Bottom) ==================== */
         .footer-right-container {
             width: 100%;
             border-top: 1px solid rgba(255, 255, 255, 0.3);
             padding-top: 25px;
-            font-size: 1.05rem;
+            font-size: 1rem;
             line-height: 1.6;
             letter-spacing: 1px;
             display: flex;
@@ -174,11 +171,10 @@
         /* RESPONSIVE MOBILE & TABLET ADJUSTMENTS */
         @media (max-width: 1024px) {
             .three-column-container {
-                grid-template-columns: 1fr; /* Stack into 1 clean vertical column */
+                grid-template-columns: 1fr;
                 min-height: auto;
             }
 
-            /* 1. Header & Text Section at top */
             .left-edge-strip {
                 min-height: auto;
                 padding: 40px 20px 25px 20px;
@@ -198,7 +194,6 @@
                 gap: 25px;
             }
 
-            /* 2. Video section in middle */
             .middle-video-column {
                 grid-column: 1;
                 height: 50vh;
@@ -209,7 +204,6 @@
                 position: relative;
             }
 
-            /* 3. Navigation Links & Contact details at bottom */
             .right-edge-strip {
                 min-height: auto;
                 padding: 35px 20px 40px 20px;
@@ -240,12 +234,10 @@
 
     <div class="three-column-container">
         
-        <!-- PART 1: LEFT BEIGE COLUMN (Text starts outside the video) -->
+        <!-- PART 1: LEFT BEIGE COLUMN -->
         <div class="left-edge-strip">
-            <!-- Brand Name (Bold and Large) -->
             <a href="index.html" class="brand-name">Year of 25</a>
             
-            <!-- Intro Text & Services -->
             <div class="left-middle-content">
                 <p class="intro-text">
                     "Year of 25" represents more than just clothing; it's a lifestyle brand that celebrates the journey of self-discovery and personal transformation. The brand's identity is rooted in the idea that age 25 is a pivotal year in many people's lives. It's an age when individuals often experience significant changes, make important decisions, and embark on new adventures.
@@ -263,7 +255,7 @@
             </div>
         </div>
 
-        <!-- PART 2: MIDDLE COLUMN (VIDEO ENTIRELY) -->
+        <!-- PART 2: MIDDLE COLUMN (VIDEO) -->
         <div class="middle-video-column">
             <video autoplay loop muted playsinline>
                 <source src="images/fashion-video.mp4" type="video/mp4">
@@ -271,18 +263,17 @@
             </video>
         </div>
 
-        <!-- PART 3: RIGHT BEIGE COLUMN (Links & Consolidated Contact details on bottom) -->
+        <!-- PART 3: RIGHT BEIGE COLUMN (LINKS, CONTACTS & ADDRESS) -->
         <div class="right-edge-strip">
-            <!-- Top: Navigation Links -->
+            <!-- Top: Main Links (Our Services, View Our Work, Shop) -->
             <nav class="right-links">
                 <a href="services.html" class="nav-topic">Our Services</a>
                 <a href="view-our-work.html" class="nav-topic">View Our Work</a>
                 <a href="shop.html" class="nav-topic">Shop</a>
             </nav>
 
-            <!-- Bottom: Contacts stacked above Shop Address -->
+            <!-- Bottom: Contact Details & Shop Address -->
             <div class="footer-right-container">
-                <!-- Contact Block -->
                 <div class="contact-block">
                     <span class="contact-label">Our Contact</span>
                     <div>yearoftwentyfive@gmail.com</div>
@@ -291,7 +282,6 @@
                     <div>+91 9955527562</div>
                 </div>
 
-                <!-- Shop Address -->
                 <div class="address-block">
                     <span class="contact-label">Shop Address</span>
                     <div>Year of 25 Design Studio Middle Lane, Dangratoli, Ranchi - 834001</div>
