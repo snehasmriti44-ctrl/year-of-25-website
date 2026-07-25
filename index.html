@@ -1,239 +1,199 @@
 <!DOCTYPE html> 
 <html lang="en"> 
 <head> 
+    <!-- CRITICAL FOR AUTOMATIC MOBILE & TABLET RESPONSIVENESS -->
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Year of 25</title> 
+    
     <style> 
-        /* Base Reset */ 
+        /* 1. RESET & BASE STYLES */
         * { 
             box-sizing: border-box; 
             margin: 0; 
             padding: 0; 
         } 
- 
+
         body { 
             font-family: "Times New Roman", Times, serif; 
-            background-color: #000000;  
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            overflow-x: hidden; 
+            background-color: #ffffff;  
+            color: #000000; 
+            /* Fluid padding: scales dynamically between mobile (15px) and desktop (50px) */
+            padding: clamp(15px, 4vw, 50px); 
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         } 
- 
-        /* FULL SCREEN VIDEO CONFIGURATION */ 
-        .fullscreen-video-bg { 
-            position: fixed; 
-            top: 50%; 
-            left: 50%; 
-            min-width: 100%; 
-            min-height: 100%; 
-            width: auto; 
-            height: auto; 
-            z-index: -2; 
-            transform: translate(-50%, -50%); 
-            object-fit: cover;  
-        } 
- 
-        /* OVERLAY TINT FOR TEXT CLARITY */ 
-        .video-overlay { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: rgba(0, 0, 0, 0.45);  
-            z-index: -1; 
-        } 
- 
-        /* SITE CONTENT LAYER */ 
-        .site-content-wrapper { 
-            position: relative; 
-            z-index: 1; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between;  
-            padding: 40px 50px; 
-            color: #FFFFFF;  
-        } 
- 
-        /* TOP NAVIGATION STRIP */ 
+
+        main {
+            flex: 1;
+        }
+
+        /* 2. RESPONSIVE NAVIGATION BAR */
         .navbar { 
             display: flex; 
             justify-content: space-between;  
             align-items: center; 
             width: 100%; 
+            margin-bottom: clamp(30px, 5vw, 60px); 
+            flex-wrap: wrap; 
+            gap: 20px;
         } 
- 
+
         .brand-name { 
-            font-size: 3rem;  
+            font-size: clamp(1.5rem, 4vw, 2.2rem);  
             text-transform: uppercase; 
-            letter-spacing: 8px; 
+            letter-spacing: clamp(3px, 1vw, 6px); 
             font-weight: normal; 
-            text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.7); 
             text-decoration: none; 
-            color: #FFFFFF; 
+            color: #000000; 
         } 
- 
+
         .right-links { 
             display: flex; 
-            gap: 40px;  
+            gap: clamp(15px, 3vw, 40px);  
+            flex-wrap: wrap;
         } 
- 
+
         .nav-topic { 
-            font-size: 1.2rem; 
+            font-size: clamp(0.85rem, 1.5vw, 1.1rem); 
             text-transform: uppercase; 
             letter-spacing: 2px; 
             cursor: pointer; 
-            font-weight: normal; 
-            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);  
             text-decoration: none; 
-            color: #FFFFFF; 
+            color: #555555; 
+            transition: color 0.3s; 
         } 
- 
-        /* MAIN CONTENT AREA */ 
-        .main-content { 
-            flex-grow: 1; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: flex-start;  
-            justify-content: flex-start;  
-            padding-top: 30px;  
-            gap: 40px; 
+
+        .nav-topic:hover, .active-nav { 
+            color: #000000; 
+            font-weight: bold; 
         } 
- 
-        .intro-text { 
-            font-size: 1.5rem;  
-            line-height: 1.6; 
-            max-width: 800px;  
-            text-align: left;  
-            text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.7); 
-            opacity: 0.95; 
-        } 
- 
-        /* SERVICES MENU (TEXT ONLY FOR HOMEPAGE) */ 
-        .homepage-services { 
-            max-width: 500px; 
-            text-align: left; 
-            text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.7); 
-        } 
- 
-        .services-title { 
-            font-size: 1.6rem; 
-            text-transform: uppercase; 
-            letter-spacing: 3px; 
-            margin-bottom: 20px; 
-            font-weight: normal; 
-            border-bottom: 1px solid rgba(255, 255, 255, 0.4); 
-            padding-bottom: 6px; 
-        } 
- 
-        .services-list { 
-            list-style: none; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 14px; 
-        } 
- 
-        .services-list li { 
-            font-size: 1.45rem;  
-            letter-spacing: 1px; 
-            opacity: 0.95; 
-        } 
- 
-        /* BOTTOM DUAL-COLUMN FOOTER SECTION */ 
-        .footer-container { 
-            display: flex; 
-            justify-content: space-between;  
-            align-items: flex-end; 
-            width: 100%; 
-            margin-top: 40px; 
-            font-size: 1.1rem; 
-            line-height: 1.6; 
-            letter-spacing: 1px; 
-            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7); 
-        } 
- 
-        .footer-left { text-align: left; } 
-        .footer-right { text-align: right; max-width: 450px; } 
- 
-        .contact-label { 
-            text-transform: uppercase; 
-            font-size: 0.95rem; 
-            opacity: 0.8; 
-            display: block; 
-            margin-top: 10px; 
-        } 
-         
-        .footer-left .contact-label:first-child, 
-        .footer-right .contact-label:first-child { 
-            margin-top: 0; 
-        } 
+
+        /* 3. HERO MEDIA SECTION (HERO VIDEO / IMAGE) */
+        .hero-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto clamp(40px, 6vw, 80px) auto;
+            position: relative;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-media {
+            width: 100%;
+            height: auto;
+            max-height: 70vh; /* Prevents video from taking up more than 70% of screen height */
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 4. INTRO / WELCOME TEXT */
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto clamp(30px, 5vw, 60px) auto;
+            padding: 0 10px;
+        }
+
+        .hero-title {
+            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(0.95rem, 2vw, 1.15rem);
+            color: #555555;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .cta-button:hover {
+            background-color: #333333;
+            transform: translateY(-2px);
+        }
+
+        /* 5. FOOTER */
+        footer {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #eeeeee;
+            font-size: 0.85rem;
+            color: #777777;
+            letter-spacing: 1px;
+            margin-top: auto;
+        }
+
+        /* 6. MOBILE SPECIFIC OVERRIDES */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .right-links {
+                justify-content: center;
+            }
+
+            .hero-media {
+                max-height: 50vh; /* Slightly smaller height on phones for better scroll experience */
+            }
+        }
     </style> 
 </head> 
 <body> 
- 
-    <!-- Background Video Element --> 
-    <video autoplay loop muted playsinline class="fullscreen-video-bg"> 
-        <source src="images/fashion-video.mp4" type="video/mp4"> 
-    </video> 
- 
-    <!-- Visibility Tint Layer --> 
-    <div class="video-overlay"></div> 
- 
-    <div class="site-content-wrapper"> 
- 
-        <!-- TOP NAVIGATION STRIP --> 
-        <nav class="navbar"> 
-            <a href="index.html" class="brand-name">Year of 25</a> 
- 
-            <div class="right-links"> 
-                <a href="services.html" class="nav-topic">Our Services</a> 
-                <a href="view-our-work.html" class="nav-topic">View Our Work</a> 
-                <a href="shop.html" class="nav-topic">Shop</a> 
-            </div> 
-        </nav> 
- 
-        <!-- MAIN CONTENT OF THE PAGE --> 
-        <main class="main-content"> 
-            <p class="intro-text"> 
-                "Year of 25" represents more than just clothing; it's a lifestyle brand that celebrates 
-the journey of self-discovery and personal transformation. The brand's identity is rooted in 
-the idea that age 25 is a pivotal year in many people's lives. It's an age when individuals 
-often experience significant changes, make important decisions, and embark on new 
-adventures. 
-            </p> 
- 
-            <!-- Text-Only Services List for Homepage --> 
-            <section class="homepage-services"> 
-                <h2 class="services-title">Services We Offer</h2> 
-                <ul class="services-list"> 
-                    <li>Outfit Customization</li> 
-                    <li>Fashion Consultation</li> 
-                    <li>Rent Your Outfit</li> 
-                    <li>Bulk Orders</li> 
-                </ul> 
-            </section> 
-        </main> 
- 
-        <!-- BOTTOM FOOTER DIVISION --> 
-        <footer class="footer-container"> 
-            <div class="footer-left"> 
-                <span class="contact-label">Our Contact</span> 
-                <div>yearoftwentyfive@gmail.com</div> 
-                 
-                <span class="contact-label">Phone Number</span> 
-                <div>+91 9955527562</div> 
-            </div> 
- 
-            <div class="footer-right"> 
-                <span class="contact-label">Shop Address</span> 
-                <div>Year of 25 Design Studio Middle Lane, Dangratoli, Ranchi - 834001</div> 
-            </div> 
-        </footer> 
- 
-    </div> 
- 
+
+    <!-- NAVIGATION -->
+    <nav class="navbar"> 
+        <a href="index.html" class="brand-name">Year of 25</a> 
+        <div class="right-links"> 
+            <a href="services.html" class="nav-topic">Our Services</a> 
+            <a href="view-our-work.html" class="nav-topic">View Our Work</a> 
+            <a href="shop.html" class="nav-topic">Shop</a> 
+        </div> 
+    </nav> 
+
+    <!-- MAIN HERO CONTENT -->
+    <main>
+        <div class="hero-container">
+            <!-- Video Hero Banner -->
+            <video class="hero-media" autoplay loop muted playsinline poster="images/bg1.jpeg">
+                <source src="images/fashion-video.mp4" type="video/mp4">
+                <!-- Fallback image if video fails to load or play -->
+                <img src="images/bg1.jpeg" alt="Year of 25 Banner" class="hero-media">
+            </video>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">Timeless Design & Studio</h1>
+            <p class="hero-subtitle">Exploring modern aesthetics, curated collections, and creative direction.</p>
+            <a href="shop.html" class="cta-button">Explore Collection</a>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; Year of 25. All Rights Reserved.</p>
+    </footer>
+
 </body> 
 </html>
