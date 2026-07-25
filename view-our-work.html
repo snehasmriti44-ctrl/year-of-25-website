@@ -20,45 +20,23 @@
             line-height: 1.6;
         } 
  
-        /* TOP NAVIGATION STRIP */ 
+        /* TOP BRAND HEADER */ 
         .navbar { 
             display: flex; 
-            justify-content: space-between;  
+            justify-content: flex-start;  
             align-items: center; 
             width: 100%; 
-            margin-bottom: clamp(30px, 5vw, 60px); 
-            flex-wrap: wrap;
-            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto clamp(30px, 5vw, 60px) auto; 
         } 
  
         .brand-name { 
-            font-size: clamp(1.5rem, 4vw, 2.2rem);  
+            font-size: clamp(1.8rem, 4vw, 2.2rem);  
             text-transform: uppercase; 
-            letter-spacing: clamp(3px, 1vw, 6px); 
+            letter-spacing: clamp(4px, 1vw, 6px); 
             font-weight: normal; 
             text-decoration: none; 
             color: #000000; 
-        } 
- 
-        .right-links { 
-            display: flex; 
-            gap: clamp(15px, 3vw, 40px);  
-            flex-wrap: wrap;
-        } 
- 
-        .nav-topic { 
-            font-size: clamp(0.85rem, 1.5vw, 1.1rem); 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            cursor: pointer; 
-            text-decoration: none; 
-            color: #555555; 
-            transition: color 0.3s; 
-        } 
- 
-        .nav-topic:hover, .active-nav { 
-            color: #000000; 
-            font-weight: bold; 
         } 
  
         /* LARGE VERTICAL PORTFOLIO LAYOUT */ 
@@ -99,29 +77,22 @@
         /* RESPONSIVE OVERRIDES */
         @media (max-width: 768px) {
             .navbar {
-                flex-direction: column;
-                text-align: center;
                 justify-content: center;
+                text-align: center;
             }
 
-            .right-links {
-                justify-content: center;
+            .portfolio-heading {
+                text-align: center;
             }
         }
     </style> 
 </head> 
 <body> 
  
-    <!-- TOP NAV STRIP --> 
-    <nav class="navbar"> 
+    <!-- TOP BRAND HEADER --> 
+    <header class="navbar"> 
         <a href="index.html" class="brand-name">Year of 25</a> 
- 
-        <div class="right-links"> 
-            <a href="services.html" class="nav-topic">Our Services</a> 
-            <a href="view-our-work.html" class="nav-topic active-nav">View Our Work</a> 
-            <a href="shop.html" class="nav-topic">Shop</a> 
-        </div> 
-    </nav> 
+    </header> 
  
     <!-- PORTFOLIO DISPLAY --> 
     <main class="portfolio-container"> 
