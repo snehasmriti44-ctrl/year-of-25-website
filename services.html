@@ -1,0 +1,345 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Our Services - Year of 25</title> 
+    <style> 
+        /* Base Reset */ 
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        } 
+ 
+        body { 
+            font-family: "Times New Roman", Times, serif; 
+            background-color: #FFFFFF;  
+            color: #000000; 
+            padding: 40px 50px; 
+        } 
+ 
+        /* TOP NAVIGATION STRIP */ 
+        .navbar { 
+            display: flex; 
+            justify-content: space-between;  
+            align-items: center; 
+            width: 100%; 
+            margin-bottom: 60px; 
+        } 
+ 
+        .brand-name { 
+            font-size: 2.2rem;  
+            text-transform: uppercase; 
+            letter-spacing: 6px; 
+            font-weight: normal; 
+            text-decoration: none; 
+            color: #000000; 
+        } 
+ 
+        .right-links { 
+            display: flex; 
+            gap: 40px;  
+        } 
+ 
+        .nav-topic { 
+            font-size: 1.1rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            cursor: pointer; 
+            text-decoration: none; 
+            color: #555555; 
+            transition: color 0.3s; 
+        } 
+ 
+        .nav-topic:hover, .active-nav { 
+            color: #000000; 
+            font-weight: bold; 
+        } 
+ 
+        /* MAIN CONTENT GRID */ 
+        .page-container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 70px; 
+        } 
+ 
+        /* TWO-COLUMN TOP LAYOUT */ 
+        .top-split-layout { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 60px; 
+            align-items: center; 
+        } 
+ 
+        /* Left Side: Services List */ 
+        .services-list-panel { 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+        } 
+ 
+        .services-heading { 
+            font-size: 1.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 4px; 
+            margin-bottom: 35px; 
+            font-weight: normal; 
+            border-bottom: 1px solid #000000; 
+            padding-bottom: 10px; 
+        } 
+ 
+        .service-item { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 24px; 
+            font-size: 1.2rem; 
+            letter-spacing: 1px; 
+        } 
+ 
+        .service-connect-btn { 
+            background-color: transparent; 
+            border: 1px solid #000000; 
+            color: #000000; 
+            padding: 8px 16px; 
+            font-family: "Times New Roman", Times, serif; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+        } 
+ 
+        .service-connect-btn:hover { 
+            background-color: #000000; 
+            color: #FFFFFF; 
+        } 
+ 
+        /* Right Side: Proportional Video Panel */ 
+        .video-panel-wrapper { 
+            width: 100%; 
+            height: 450px; 
+            background-color: #F9F9F9; 
+            overflow: hidden; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        } 
+ 
+        .video-panel-wrapper video { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        } 
+ 
+        /* BOTTOM CENTER: BOOKING PANEL */ 
+        .bottom-booking-section { 
+            display: flex; 
+            justify-content: center; 
+            width: 100%; 
+        } 
+ 
+        .booking-card { 
+            width: 100%; 
+            max-width: 550px;  
+            background-color: #FBFBFB; 
+            border: 1px solid #EAEAEE; 
+            padding: 40px; 
+        } 
+ 
+        .booking-card h3 { 
+            font-size: 1.4rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            margin-bottom: 30px; 
+            font-weight: normal; 
+            text-align: center; 
+        } 
+ 
+        .form-group { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 8px; 
+            margin-bottom: 22px; 
+        } 
+ 
+        .form-group label { 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            color: #555555; 
+        } 
+ 
+        .form-group input, .form-group select { 
+            padding: 12px; 
+            font-family: "Times New Roman", Times, serif; 
+            font-size: 1rem; 
+            background-color: #FFFFFF; 
+            border: 1px solid #CCCCCC; 
+            color: #000000; 
+            outline: none; 
+            width: 100%; 
+        } 
+ 
+        .form-group input:focus, .form-group select:focus { 
+            border-color: #000000; 
+        } 
+ 
+        .submit-booking-btn { 
+            width: 100%; 
+            padding: 15px; 
+            background-color: #000000; 
+            color: #FFFFFF; 
+            border: none; 
+            font-family: "Times New Roman", Times, serif; 
+            font-size: 1rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            cursor: pointer; 
+            transition: opacity 0.3s; 
+            margin-top: 10px; 
+        } 
+ 
+        .submit-booking-btn:hover { 
+            opacity: 0.9; 
+        } 
+ 
+        /* Responsive Breakpoint */ 
+        @media (max-width: 850px) { 
+            .top-split-layout { 
+                grid-template-columns: 1fr; 
+                gap: 40px; 
+            } 
+            .video-panel-wrapper { 
+                height: 320px; 
+            } 
+        } 
+    </style> 
+</head> 
+<body> 
+ 
+    <!-- TOP NAV STRIP --> 
+    <nav class="navbar"> 
+        <a href="index.html" class="brand-name">Year of 25</a> 
+ 
+        <div class="right-links"> 
+            <a href="services.html" class="nav-topic active-nav">Our Services</a> 
+            <a href="view-our-work.html" class="nav-topic">View Our Work</a> 
+            <a href="shop.html" class="nav-topic">Shop</a> 
+        </div> 
+    </nav> 
+ 
+    <!-- CONTENT WRAPPER --> 
+    <main class="page-container"> 
+         
+        <!-- TOP ROW LAYOUT: Services Left, Video Right --> 
+        <div class="top-split-layout"> 
+             
+            <!-- Left Side Panel --> 
+            <section class="services-list-panel"> 
+                <h2 class="services-heading">Services We Offer</h2> 
+                 
+                <div class="service-item"> 
+                    <span>1) Outfit Customization</span> 
+                    <button class="service-connect-btn" onclick="connectForService('Outfit Customization')">Connect on WhatsApp</button> 
+                </div> 
+ 
+                <div class="service-item"> 
+                    <span>2) Fashion Consultation</span> 
+                    <button class="service-connect-btn" onclick="connectForService('Fashion Consultation')">Connect on WhatsApp</button> 
+                </div> 
+ 
+                <div class="service-item"> 
+                    <span>3) Rent Your Outfit</span> 
+                    <button class="service-connect-btn" onclick="connectForService('Rent Your Outfit')">Connect on WhatsApp</button> 
+                </div> 
+ 
+                <div class="service-item"> 
+                    <span>4) Bulk Orders</span> 
+                    <button class="service-connect-btn" onclick="connectForService('Bulk Orders')">Connect on WhatsApp</button> 
+                </div> 
+            </section> 
+ 
+            <!-- Right Side Panel --> 
+            <div class="video-panel-wrapper"> 
+                <video autoplay loop muted playsinline> 
+                    <source src="images/ourservicesv1.mp4" type="video/mp4"> 
+                </video> 
+            </div> 
+ 
+        </div> 
+ 
+        <!-- BOTTOM ROW LAYOUT: Centered Form --> 
+        <div class="bottom-booking-section"> 
+            <section class="booking-card"> 
+                <h3>Book Your Visit</h3> 
+                 
+                <div class="form-group"> 
+                    <label for="cust-name">Your Full Name</label> 
+                    <input type="text" id="cust-name" placeholder="Enter your name"> 
+                </div> 
+ 
+                <div class="form-group"> 
+                    <label for="cust-date">Select Appointment Date</label> 
+                    <input type="date" id="cust-date"> 
+                </div> 
+ 
+                <div class="form-group"> 
+                    <label for="cust-time">Select Appointment Time</label> 
+                    <select id="cust-time"> 
+                        <option value="">-- Choose a time slot --</option> 
+                        <option value="11:00 AM">11:00 AM</option> 
+                        <option value="12:00 PM">12:00 PM</option> 
+                        <option value="01:00 PM">01:00 PM</option> 
+                        <option value="02:00 PM">02:00 PM</option> 
+                        <option value="03:00 PM">03:00 PM</option> 
+                        <option value="04:00 PM">04:00 PM</option> 
+                        <option value="05:00 PM">05:00 PM</option> 
+                        <option value="06:00 PM">06:00 PM</option> 
+                        <option value="07:00 PM">07:00 PM</option> 
+                    </select> 
+                </div> 
+ 
+                <button class="submit-booking-btn" onclick="submitVisitBooking()">Book Your Visit</button> 
+            </section> 
+        </div> 
+ 
+    </main> 
+ 
+    <!-- INTERACTION LOGIC --> 
+    <script> 
+        // Target WhatsApp Owner Number 
+        var ownerPhoneNumber = "919955527562"; 
+ 
+        function connectForService(serviceName) { 
+            var message = "Hello Year of 25! I am interested in your '" + serviceName + "' service and would like to know more details."; 
+            var url = "https://wa.me/" + ownerPhoneNumber + "?text=" + encodeURIComponent(message); 
+            window.open(url, '_blank'); 
+        } 
+ 
+        function submitVisitBooking() { 
+            var name = document.getElementById('cust-name').value.trim(); 
+            var date = document.getElementById('cust-date').value; 
+            var time = document.getElementById('cust-time').value; 
+ 
+            if (!name || !date || !time) { 
+                alert("Please fill out your Name, choose a Date, and select a Time to book your visit."); 
+                return; 
+            } 
+ 
+            var message = "Hello Year of 25! I would like to book an appointment visit.\n\n" + 
+                          "Name: " + name + "\n" + 
+                          "Date: " + date + "\n" + 
+                          "Time Slot: " + time + "\n\n" + 
+                          "Please confirm if this slot is available. Thank you!"; 
+ 
+            var url = "https://wa.me/" + ownerPhoneNumber + "?text=" + encodeURIComponent(message); 
+            window.open(url, '_blank'); 
+        } 
+    </script> 
+ 
+</body> 
+</html>

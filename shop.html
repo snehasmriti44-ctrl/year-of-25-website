@@ -1,0 +1,456 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Shop - Year of 25</title> 
+    <style> 
+        /* Base Reset */ 
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        } 
+ 
+        body { 
+            font-family: "Times New Roman", Times, serif; 
+            background-color: #FFFFFF;  
+            color: #000000; 
+            padding: 40px 50px; 
+        } 
+ 
+        /* TOP NAVIGATION STRIP */ 
+        .navbar { 
+            display: flex; 
+            justify-content: space-between;  
+            align-items: center; 
+            width: 100%; 
+            margin-bottom: 60px; 
+        } 
+ 
+        .brand-name { 
+            font-size: 2.2rem;  
+            text-transform: uppercase; 
+            letter-spacing: 6px; 
+            font-weight: normal; 
+            text-decoration: none; 
+            color: #000000; 
+        } 
+ 
+        .right-links { 
+            display: flex; 
+            gap: 40px;  
+        } 
+ 
+        .nav-topic { 
+            font-size: 1.1rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            cursor: pointer; 
+            text-decoration: none; 
+            color: #555555; 
+            transition: color 0.3s; 
+        } 
+ 
+        .nav-topic:hover, .active-nav { 
+            color: #000000; 
+            font-weight: bold; 
+        } 
+ 
+        /* PRODUCT GRID SECTION */ 
+        .shop-heading { 
+            font-size: 1.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 4px; 
+            margin-bottom: 40px; 
+            font-weight: normal; 
+        } 
+ 
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 50px 30px;  
+        } 
+ 
+        .product-card { 
+            display: flex; 
+            flex-direction: column; 
+        } 
+ 
+        /* CAROUSEL CONTAINER */ 
+        .product-image-wrapper { 
+            position: relative; 
+            width: 100%; 
+            height: 420px;  
+            overflow: hidden; 
+            background-color: #F5F5F5; 
+            margin-bottom: 15px; 
+        } 
+ 
+        /* Slide Container */ 
+        .carousel-slides { 
+            display: flex; 
+            width: 100%; 
+            height: 100%; 
+            transition: transform 0.4s ease-in-out; 
+        } 
+ 
+        .carousel-slides img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            flex-shrink: 0; 
+        } 
+ 
+        /* Nav Arrows */ 
+        .carousel-arrow { 
+            position: absolute; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            background-color: rgba(255, 255, 255, 0.7); 
+            border: none; 
+            color: #000000; 
+            width: 32px; 
+            height: 32px; 
+            border-radius: 50%; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1rem; 
+            font-weight: bold; 
+            z-index: 2; 
+            transition: background-color 0.3s, opacity 0.3s; 
+            opacity: 0; /* Hidden by default, appears on hover */ 
+        } 
+ 
+        .product-image-wrapper:hover .carousel-arrow { 
+            opacity: 1; 
+        } 
+ 
+        .carousel-arrow:hover { 
+            background-color: rgba(255, 255, 255, 0.95); 
+        } 
+ 
+        .arrow-left { 
+            left: 10px; 
+        } 
+ 
+        .arrow-right { 
+            right: 10px; 
+        } 
+ 
+        /* PRODUCT INFO */ 
+        .product-info { 
+            display: flex; 
+            justify-content: space-between; 
+            font-size: 1rem; 
+            letter-spacing: 1px; 
+            text-transform: uppercase; 
+            margin-bottom: 12px; 
+        } 
+ 
+        .product-price { 
+            color: #666666; 
+            font-family: sans-serif; 
+        } 
+ 
+        /* SIZE & ORDER INTERACTIVE ELEMENTS */ 
+        .order-controls { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 8px; 
+        } 
+ 
+        .size-dropdown { 
+            width: 100%; 
+            padding: 10px; 
+            font-family: "Times New Roman", Times, serif; 
+            font-size: 1rem; 
+            border: 1px solid #CCCCCC; 
+            background-color: #FFFFFF; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            cursor: pointer; 
+            outline: none; 
+        } 
+ 
+        .whatsapp-btn { 
+            width: 100%; 
+            padding: 12px; 
+            background-color: #000000;  
+            color: #FFFFFF; 
+            text-align: center; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-size: 0.9rem; 
+            border: none; 
+            cursor: pointer; 
+            transition: background-color 0.3s; 
+        } 
+ 
+        .whatsapp-btn:hover { 
+            background-color: #111111; 
+            opacity: 0.9; 
+        } 
+    </style> 
+</head> 
+<body> 
+ 
+    <!-- TOP NAV STRIP --> 
+    <nav class="navbar"> 
+        <a href="index.html" class="brand-name">Year of 25</a> 
+ 
+        <div class="right-links"> 
+            <a href="services.html" class="nav-topic">Our Services</a> 
+            <a href="view-our-work.html" class="nav-topic">View Our Work</a> 
+            <a href="shop.html" class="nav-topic active-nav">Shop</a> 
+        </div> 
+    </nav> 
+ 
+    <!-- CONTENT --> 
+    <main> 
+        <h2 class="shop-heading">Shop Collection</h2> 
+         
+        <div class="product-grid"> 
+             
+            <!-- PRODUCT 1: AARZU (Multi-image slider) --> 
+            <div class="product-card"> 
+                <div class="product-image-wrapper" id="carousel-1"> 
+                    <button class="carousel-arrow arrow-left" onclick="moveSlide('carousel-1', -1)">&#10094;</button> 
+                    <div class="carousel-slides"> 
+                        <img src="images/product1.jpeg" alt="AARZU view 1"> 
+                        <img src="images/product1b.jpeg" alt="AARZU view 2"> 
+                        <img src="images/product1c.jpeg" alt="AARZU view 3"> 
+                    </div> 
+                    <button class="carousel-arrow arrow-right" onclick="moveSlide('carousel-1', 1)">&#10095;</button> 
+                </div> 
+                <div class="product-info"> 
+                    <span class="product-title">AARZU</span> 
+                    <span class="product-price">₹550</span> 
+                </div> 
+                <div class="order-controls"> 
+                    <select class="size-dropdown" id="size-prod1"> 
+                        <option value="XS">Size: XS</option> 
+                        <option value="S">Size: S</option> 
+                        <option value="M">Size: M</option> 
+                        <option value="L">Size: L</option> 
+                        <option value="XL">Size: XL</option> 
+                    </select> 
+                    <button class="whatsapp-btn" onclick="sendWhatsAppOrder('AARZU', 'size-prod1')">Order via WhatsApp</button> 
+                </div> 
+            </div> 
+ 
+            <!-- PRODUCT 2: FIZZA (Multi-image slider) --> 
+            <div class="product-card"> 
+                <div class="product-image-wrapper" id="carousel-2"> 
+                    <button class="carousel-arrow arrow-left" onclick="moveSlide('carousel-2', -1)">&#10094;</button> 
+                    <div class="carousel-slides"> 
+                        <img src="images/product2.jpeg" alt="FIZZA view 1"> 
+                        <img src="images/product2b.jpeg" alt="FIZZA view 2"> 
+                        <img src="images/product2c.jpeg" alt="FIZZA view 3"> 
+                    </div> 
+                    <button class="carousel-arrow arrow-right" onclick="moveSlide('carousel-2', 1)">&#10095;</button> 
+                </div> 
+                <div class="product-info"> 
+                    <span class="product-title">FIZZA</span> 
+                    <span class="product-price">₹550</span> 
+                </div> 
+                <div class="order-controls"> 
+                    <select class="size-dropdown" id="size-prod2"> 
+                        <option value="XS">Size: XS</option> 
+                        <option value="S">Size: S</option> 
+                        <option value="M">Size: M</option> 
+                        <option value="L">Size: L</option> 
+                        <option value="XL">Size: XL</option> 
+                    </select> 
+                    <button class="whatsapp-btn" onclick="sendWhatsAppOrder('FIZZA', 'size-prod2')">Order via WhatsApp</button> 
+                </div> 
+            </div> 
+ 
+            <!-- PRODUCT 3: MAEHRU (Multi-image slider) --> 
+            <div class="product-card"> 
+                <div class="product-image-wrapper" id="carousel-3"> 
+                    <button class="carousel-arrow arrow-left" onclick="moveSlide('carousel-3', -1)">&#10094;</button> 
+                    <div class="carousel-slides"> 
+                        <img src="images/product3.jpeg" alt="MAEHRU view 1"> 
+                        <img src="images/product3b.jpeg" alt="MAEHRU view 2"> 
+                        <img src="images/product3c.jpeg" alt="MAEHRU view 3"> 
+                    </div> 
+                    <button class="carousel-arrow arrow-right" onclick="moveSlide('carousel-3', 1)">&#10095;</button> 
+                </div> 
+                <div class="product-info"> 
+                    <span class="product-title">MAEHRU</span> 
+                    <span class="product-price">₹650</span> 
+                </div> 
+                <div class="order-controls"> 
+                    <select class="size-dropdown" id="size-prod3"> 
+                        <option value="XS">Size: XS</option> 
+                        <option value="S">Size: S</option> 
+                        <option value="M">Size: M</option> 
+                        <option value="L">Size: L</option> 
+                        <option value="XL">Size: XL</option> 
+                    </select> 
+                    <button class="whatsapp-btn" onclick="sendWhatsAppOrder('MAEHRU', 'size-prod3')">Order via WhatsApp</button> 
+                </div> 
+            </div> 
+ 
+            <!-- PRODUCT 4: AFTAAB (Multi-image slider) --> 
+            <div class="product-card"> 
+                <div class="product-image-wrapper" id="carousel-4"> 
+                    <button class="carousel-arrow arrow-left" onclick="moveSlide('carousel-4', -1)">&#10094;</button> 
+                    <div class="carousel-slides"> 
+                        <img src="images/product4.jpeg" alt="AFTAAB view 1"> 
+                        <img src="images/product4b.jpeg" alt="AFTAAB view 2"> 
+                        <img src="images/product4c.jpeg" alt="AFTAAB view 3"> 
+                    </div> 
+                    <button class="carousel-arrow arrow-right" onclick="moveSlide('carousel-4', 1)">&#10095;</button> 
+                </div> 
+                <div class="product-info"> 
+                    <span class="product-title">AFTAAB</span> 
+                    <span class="product-price">₹650</span> 
+                </div> 
+                <div class="order-controls"> 
+                    <select class="size-dropdown" id="size-prod4"> 
+                        <option value="XS">Size: XS</option> 
+                        <option value="S">Size: S</option> 
+                        <option value="M">Size: M</option> 
+                        <option value="L">Size: L</option> 
+                        <option value="XL">Size: XL</option> 
+                    </select> 
+                    <button class="whatsapp-btn" onclick="sendWhatsAppOrder('AFTAAB', 'size-prod4')">Order via WhatsApp</button> 
+                </div> 
+            </div> 
+ 
+            <!-- PRODUCT 5: ETHNIC TOP (XS ONLY) --> 
+            <div class="product-card"> 
+                <div class="product-image-wrapper"> 
+                    <img src="images/product5.jpeg" alt="Ethnic Top" style="width:100%; height:100%; object-fit:cover;"> 
+                </div> 
+                <div class="product-info"> 
+                    <span class="product-title">Ethnic Top</span> 
+                    <span class="product-price">₹450</span> 
+                </div> 
+                <div class="order-controls"> 
+                    <select class="size-dropdown" id="size-prod5"> 
+                        <option value="XS">Size: XS</option> 
+                    </select> 
+                    <button class="whatsapp-btn" onclick="sendWhatsAppOrder('Ethnic Top (Product 5)', 'size-prod5')">Order via WhatsApp</button> 
+                </div> 
+            </div> 
+ 
+            <!-- PRODUCT 6: ETHNIC TOP (XS ONLY) --> 
+            <div class="product-card"> 
+                <div class="product-image-wrapper"> 
+                    <img src="images/product6.jpeg" alt="Ethnic Top" style="width:100%; height:100%; object-fit:cover;"> 
+                </div> 
+                <div class="product-info"> 
+                    <span class="product-title">Ethnic Top</span> 
+                    <span class="product-price">₹450</span> 
+                </div> 
+                <div class="order-controls"> 
+                    <select class="size-dropdown" id="size-prod6"> 
+                        <option value="XS">Size: XS</option> 
+                    </select> 
+                    <button class="whatsapp-btn" onclick="sendWhatsAppOrder('Ethnic Top (Product 6)', 'size-prod6')">Order via WhatsApp</button> 
+                </div> 
+            </div> 
+ 
+            <!-- PRODUCT 7: ETHNIC TOP (XS ONLY) --> 
+            <div class="product-card"> 
+                <div class="product-image-wrapper"> 
+                    <img src="images/product7.jpeg" alt="Ethnic Top" style="width:100%; height:100%; object-fit:cover;"> 
+                </div> 
+                <div class="product-info"> 
+                    <span class="product-title">Ethnic Top</span> 
+                    <span class="product-price">₹450</span> 
+                </div> 
+                <div class="order-controls"> 
+                    <select class="size-dropdown" id="size-prod7"> 
+                        <option value="XS">Size: XS</option> 
+                    </select> 
+                    <button class="whatsapp-btn" onclick="sendWhatsAppOrder('Ethnic Top (Product 7)', 'size-prod7')">Order via WhatsApp</button> 
+                </div> 
+            </div> 
+ 
+            <!-- PRODUCT 8: ETHNIC TOP (XS ONLY) --> 
+            <div class="product-card"> 
+                <div class="product-image-wrapper"> 
+                    <img src="images/product8.jpeg" alt="Ethnic Top" style="width:100%; height:100%; object-fit:cover;"> 
+                </div> 
+                <div class="product-info"> 
+                    <span class="product-title">Ethnic Top</span> 
+                    <span class="product-price">₹450</span> 
+                </div> 
+                <div class="order-controls"> 
+                    <select class="size-dropdown" id="size-prod8"> 
+                        <option value="XS">Size: XS</option> 
+                    </select> 
+                    <button class="whatsapp-btn" onclick="sendWhatsAppOrder('Ethnic Top (Product 8)', 'size-prod8')">Order via WhatsApp</button> 
+                </div> 
+            </div> 
+ 
+            <!-- PRODUCT 9: DENIM JUMPSUIT --> 
+            <div class="product-card"> 
+                <div class="product-image-wrapper"> 
+                    <img src="images/product9.jpeg" alt="Denim Jumpsuit" style="width:100%; height:100%; object-fit:cover;"> 
+                </div> 
+                <div class="product-info"> 
+                    <span class="product-title">Denim Jumpsuit</span> 
+                    <span class="product-price">₹1,400</span> 
+                </div> 
+                <div class="order-controls"> 
+                    <select class="size-dropdown" id="size-prod9"> 
+                        <option value="XS">Size: XS</option> 
+                        <option value="S">Size: S</option> 
+                        <option value="M">Size: M</option> 
+                        <option value="L">Size: L</option> 
+                        <option value="XL">Size: XL</option> 
+                    </select> 
+                    <button class="whatsapp-btn" onclick="sendWhatsAppOrder('Denim Jumpsuit', 'size-prod9')">Order via WhatsApp</button> 
+                </div> 
+            </div> 
+ 
+        </div> 
+    </main> 
+ 
+    <!-- CAROUSEL SLIDING & WHATSAPP LOGIC --> 
+    <script> 
+        // Track the current index for each carousel 
+        var carouselStates = { 
+            'carousel-1': { index: 0, count: 3 }, 
+            'carousel-2': { index: 0, count: 3 }, 
+            'carousel-3': { index: 0, count: 3 }, 
+            'carousel-4': { index: 0, count: 3 } 
+        }; 
+ 
+        function moveSlide(carouselId, direction) { 
+            var state = carouselStates[carouselId]; 
+            var container = document.getElementById(carouselId); 
+            var slidesWrapper = container.querySelector('.carousel-slides'); 
+             
+            // Calculate new index 
+            state.index += direction; 
+            if (state.index >= state.count) { 
+                state.index = 0; // Loop back to start 
+            } else if (state.index < 0) { 
+                state.index = state.count - 1; // Loop to end 
+            } 
+             
+            // Translate the slides container 
+            var offset = -state.index * 100; 
+            slidesWrapper.style.transform = 'translateX(' + offset + '%)'; 
+        } 
+ 
+        function sendWhatsAppOrder(productName, sizeDropdownId) { 
+            var selectedSize = document.getElementById(sizeDropdownId).value; 
+            var phoneNumber = "919955527562";  
+            var customMessage = "Hello Year of 25! I would like to order: " + productName + " in Size: " + selectedSize + ". Please let me know the next steps!"; 
+            var encodedMessage = encodeURIComponent(customMessage); 
+            var whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage; 
+            window.open(whatsappUrl, '_blank'); 
+        } 
+    </script> 
+ 
+</body> 
+</html>

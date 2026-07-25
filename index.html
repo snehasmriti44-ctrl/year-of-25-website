@@ -1,0 +1,239 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Year of 25</title> 
+    <style> 
+        /* Base Reset */ 
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        } 
+ 
+        body { 
+            font-family: "Times New Roman", Times, serif; 
+            background-color: #000000;  
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            overflow-x: hidden; 
+        } 
+ 
+        /* FULL SCREEN VIDEO CONFIGURATION */ 
+        .fullscreen-video-bg { 
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            min-width: 100%; 
+            min-height: 100%; 
+            width: auto; 
+            height: auto; 
+            z-index: -2; 
+            transform: translate(-50%, -50%); 
+            object-fit: cover;  
+        } 
+ 
+        /* OVERLAY TINT FOR TEXT CLARITY */ 
+        .video-overlay { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0, 0, 0, 0.45);  
+            z-index: -1; 
+        } 
+ 
+        /* SITE CONTENT LAYER */ 
+        .site-content-wrapper { 
+            position: relative; 
+            z-index: 1; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between;  
+            padding: 40px 50px; 
+            color: #FFFFFF;  
+        } 
+ 
+        /* TOP NAVIGATION STRIP */ 
+        .navbar { 
+            display: flex; 
+            justify-content: space-between;  
+            align-items: center; 
+            width: 100%; 
+        } 
+ 
+        .brand-name { 
+            font-size: 3rem;  
+            text-transform: uppercase; 
+            letter-spacing: 8px; 
+            font-weight: normal; 
+            text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.7); 
+            text-decoration: none; 
+            color: #FFFFFF; 
+        } 
+ 
+        .right-links { 
+            display: flex; 
+            gap: 40px;  
+        } 
+ 
+        .nav-topic { 
+            font-size: 1.2rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            cursor: pointer; 
+            font-weight: normal; 
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);  
+            text-decoration: none; 
+            color: #FFFFFF; 
+        } 
+ 
+        /* MAIN CONTENT AREA */ 
+        .main-content { 
+            flex-grow: 1; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-start;  
+            justify-content: flex-start;  
+            padding-top: 30px;  
+            gap: 40px; 
+        } 
+ 
+        .intro-text { 
+            font-size: 1.5rem;  
+            line-height: 1.6; 
+            max-width: 800px;  
+            text-align: left;  
+            text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.7); 
+            opacity: 0.95; 
+        } 
+ 
+        /* SERVICES MENU (TEXT ONLY FOR HOMEPAGE) */ 
+        .homepage-services { 
+            max-width: 500px; 
+            text-align: left; 
+            text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.7); 
+        } 
+ 
+        .services-title { 
+            font-size: 1.6rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            margin-bottom: 20px; 
+            font-weight: normal; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4); 
+            padding-bottom: 6px; 
+        } 
+ 
+        .services-list { 
+            list-style: none; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 14px; 
+        } 
+ 
+        .services-list li { 
+            font-size: 1.45rem;  
+            letter-spacing: 1px; 
+            opacity: 0.95; 
+        } 
+ 
+        /* BOTTOM DUAL-COLUMN FOOTER SECTION */ 
+        .footer-container { 
+            display: flex; 
+            justify-content: space-between;  
+            align-items: flex-end; 
+            width: 100%; 
+            margin-top: 40px; 
+            font-size: 1.1rem; 
+            line-height: 1.6; 
+            letter-spacing: 1px; 
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7); 
+        } 
+ 
+        .footer-left { text-align: left; } 
+        .footer-right { text-align: right; max-width: 450px; } 
+ 
+        .contact-label { 
+            text-transform: uppercase; 
+            font-size: 0.95rem; 
+            opacity: 0.8; 
+            display: block; 
+            margin-top: 10px; 
+        } 
+         
+        .footer-left .contact-label:first-child, 
+        .footer-right .contact-label:first-child { 
+            margin-top: 0; 
+        } 
+    </style> 
+</head> 
+<body> 
+ 
+    <!-- Background Video Element --> 
+    <video autoplay loop muted playsinline class="fullscreen-video-bg"> 
+        <source src="images/fashion-video.mp4" type="video/mp4"> 
+    </video> 
+ 
+    <!-- Visibility Tint Layer --> 
+    <div class="video-overlay"></div> 
+ 
+    <div class="site-content-wrapper"> 
+ 
+        <!-- TOP NAVIGATION STRIP --> 
+        <nav class="navbar"> 
+            <a href="index.html" class="brand-name">Year of 25</a> 
+ 
+            <div class="right-links"> 
+                <a href="services.html" class="nav-topic">Our Services</a> 
+                <a href="view-our-work.html" class="nav-topic">View Our Work</a> 
+                <a href="shop.html" class="nav-topic">Shop</a> 
+            </div> 
+        </nav> 
+ 
+        <!-- MAIN CONTENT OF THE PAGE --> 
+        <main class="main-content"> 
+            <p class="intro-text"> 
+                "Year of 25" represents more than just clothing; it's a lifestyle brand that celebrates 
+the journey of self-discovery and personal transformation. The brand's identity is rooted in 
+the idea that age 25 is a pivotal year in many people's lives. It's an age when individuals 
+often experience significant changes, make important decisions, and embark on new 
+adventures. 
+            </p> 
+ 
+            <!-- Text-Only Services List for Homepage --> 
+            <section class="homepage-services"> 
+                <h2 class="services-title">Services We Offer</h2> 
+                <ul class="services-list"> 
+                    <li>Outfit Customization</li> 
+                    <li>Fashion Consultation</li> 
+                    <li>Rent Your Outfit</li> 
+                    <li>Bulk Orders</li> 
+                </ul> 
+            </section> 
+        </main> 
+ 
+        <!-- BOTTOM FOOTER DIVISION --> 
+        <footer class="footer-container"> 
+            <div class="footer-left"> 
+                <span class="contact-label">Our Contact</span> 
+                <div>yearoftwentyfive@gmail.com</div> 
+                 
+                <span class="contact-label">Phone Number</span> 
+                <div>+91 9955527562</div> 
+            </div> 
+ 
+            <div class="footer-right"> 
+                <span class="contact-label">Shop Address</span> 
+                <div>Year of 25 Design Studio Middle Lane, Dangratoli, Ranchi - 834001</div> 
+            </div> 
+        </footer> 
+ 
+    </div> 
+ 
+</body> 
+</html>
