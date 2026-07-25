@@ -16,7 +16,8 @@
             font-family: "Times New Roman", Times, serif; 
             background-color: #FFFFFF;  
             color: #000000; 
-            padding: 40px 50px; 
+            padding: clamp(15px, 4vw, 50px); 
+            line-height: 1.6;
         } 
  
         /* TOP NAVIGATION STRIP */ 
@@ -25,13 +26,15 @@
             justify-content: space-between;  
             align-items: center; 
             width: 100%; 
-            margin-bottom: 60px; 
+            margin-bottom: clamp(30px, 5vw, 60px); 
+            flex-wrap: wrap;
+            gap: 20px;
         } 
  
         .brand-name { 
-            font-size: 2.2rem;  
+            font-size: clamp(1.5rem, 4vw, 2.2rem);  
             text-transform: uppercase; 
-            letter-spacing: 6px; 
+            letter-spacing: clamp(3px, 1vw, 6px); 
             font-weight: normal; 
             text-decoration: none; 
             color: #000000; 
@@ -39,11 +42,12 @@
  
         .right-links { 
             display: flex; 
-            gap: 40px;  
+            gap: clamp(15px, 3vw, 40px);  
+            flex-wrap: wrap;
         } 
  
         .nav-topic { 
-            font-size: 1.1rem; 
+            font-size: clamp(0.85rem, 1.5vw, 1.1rem); 
             text-transform: uppercase; 
             letter-spacing: 2px; 
             cursor: pointer; 
@@ -63,14 +67,14 @@
             margin: 0 auto; 
             display: flex; 
             flex-direction: column; 
-            gap: 70px; 
+            gap: clamp(40px, 6vw, 70px); 
         } 
  
         /* TWO-COLUMN TOP LAYOUT */ 
         .top-split-layout { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
-            gap: 60px; 
+            gap: clamp(30px, 5vw, 60px); 
             align-items: center; 
         } 
  
@@ -82,7 +86,7 @@
         } 
  
         .services-heading { 
-            font-size: 1.8rem; 
+            font-size: clamp(1.4rem, 3vw, 1.8rem); 
             text-transform: uppercase; 
             letter-spacing: 4px; 
             margin-bottom: 35px; 
@@ -96,8 +100,10 @@
             justify-content: space-between; 
             align-items: center; 
             margin-bottom: 24px; 
-            font-size: 1.2rem; 
+            font-size: clamp(1rem, 2vw, 1.2rem); 
             letter-spacing: 1px; 
+            gap: 15px;
+            flex-wrap: wrap;
         } 
  
         .service-connect-btn { 
@@ -111,6 +117,7 @@
             letter-spacing: 1px; 
             cursor: pointer; 
             transition: all 0.3s ease; 
+            white-space: nowrap;
         } 
  
         .service-connect-btn:hover { 
@@ -147,11 +154,11 @@
             max-width: 550px;  
             background-color: #FBFBFB; 
             border: 1px solid #EAEAEE; 
-            padding: 40px; 
+            padding: clamp(20px, 4vw, 40px); 
         } 
  
         .booking-card h3 { 
-            font-size: 1.4rem; 
+            font-size: clamp(1.2rem, 2.5vw, 1.4rem); 
             text-transform: uppercase; 
             letter-spacing: 3px; 
             margin-bottom: 30px; 
@@ -207,16 +214,39 @@
             opacity: 0.9; 
         } 
  
-        /* Responsive Breakpoint */ 
+        /* Responsive Breakpoints */ 
         @media (max-width: 850px) { 
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .right-links {
+                justify-content: center;
+            }
+
             .top-split-layout { 
                 grid-template-columns: 1fr; 
                 gap: 40px; 
             } 
+
             .video-panel-wrapper { 
                 height: 320px; 
             } 
         } 
+
+        @media (max-width: 480px) {
+            .service-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .service-connect-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
     </style> 
 </head> 
 <body> 
