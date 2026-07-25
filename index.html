@@ -1,295 +1,222 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Year of 25</title>
-    <style>
-        /* Base Reset */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <!-- CRITICAL FOR AUTOMATIC MOBILE & TABLET RESPONSIVENESS -->
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Year of 25</title> 
+    
+    <style> 
+        /* 1. RESET & BASE STYLES */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        } 
 
-        body {
-            font-family: "Times New Roman", Times, serif;
-            color: #FFFFFF;
-            background-color: #C4B39B;
-            min-height: 100vh;
-            overflow-y: auto;
-        }
-
-        /* THREE-COLUMN LAYOUT */
-        .three-column-container {
-            display: grid;
-            grid-template-columns: 380px 1fr 220px;
-            width: 100%;
-            min-height: 100vh;
-            position: relative;
-        }
-
-        /* ==================== LEFT BEIGE COLUMN ==================== */
-        .left-edge-strip {
-            min-height: 100vh;
-            background-color: #C4B39B;
-            padding: 50px 35px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            z-index: 3;
-        }
-
-        .brand-name {
-            font-size: 3.4rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 8px;
-            text-decoration: none;
-            color: #FFFFFF;
-            display: block;
-            margin-bottom: 25px;
-            word-wrap: break-word;
-        }
-
-        .left-middle-content {
-            display: flex;
-            flex-direction: column;
-            gap: 35px;
-            width: 100%;
-        }
-
-        .intro-text {
-            font-size: 1.25rem; 
+        body { 
+            font-family: "Times New Roman", Times, serif; 
+            background-color: #ffffff;  
+            color: #000000; 
+            padding: clamp(15px, 4vw, 50px); 
             line-height: 1.6;
-            color: #FFFFFF;
-        }
-
-        .homepage-services {
-            width: 100%;
-        }
-
-        .services-title {
-            font-size: 1.3rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            font-weight: normal;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-            padding-bottom: 6px;
-        }
-
-        .services-list {
-            list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-        }
-
-        .services-list li {
-            font-size: 1.15rem; 
-            letter-spacing: 1px;
-            color: #FFFFFF;
-        }
-
-        /* ==================== MIDDLE COLUMN (VIDEO AREA) ==================== */
-        .middle-video-column {
-            grid-column: 2;
             min-height: 100vh;
+        } 
+
+        main {
+            flex: 1;
+        }
+
+        /* 2. RESPONSIVE NAVIGATION BAR */
+        .navbar { 
+            display: flex; 
+            justify-content: space-between;  
+            align-items: center; 
+            width: 100%; 
+            margin-bottom: clamp(30px, 5vw, 60px); 
+            flex-wrap: wrap; 
+            gap: 20px;
+        } 
+
+        .brand-name { 
+            font-size: clamp(1.5rem, 4vw, 2.2rem);  
+            text-transform: uppercase; 
+            letter-spacing: clamp(3px, 1vw, 6px); 
+            font-weight: normal; 
+            text-decoration: none; 
+            color: #000000; 
+        } 
+
+        .right-links { 
+            display: flex; 
+            gap: clamp(15px, 3vw, 40px);  
+            flex-wrap: wrap;
+        } 
+
+        .nav-topic { 
+            font-size: clamp(0.85rem, 1.5vw, 1.1rem); 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            cursor: pointer; 
+            text-decoration: none; 
+            color: #555555; 
+            transition: color 0.3s; 
+        } 
+
+        .nav-topic:hover, .active-nav { 
+            color: #000000; 
+            font-weight: bold; 
+        } 
+
+        /* 3. HERO MEDIA SECTION (HERO VIDEO / IMAGE) */
+        .hero-container {
             width: 100%;
+            max-width: 1200px;
+            margin: 0 auto clamp(30px, 5vw, 50px) auto;
             position: relative;
             overflow: hidden;
-            background-color: #000000;
-            z-index: 1;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
-        .middle-video-column video {
+        .hero-media {
             width: 100%;
-            height: 100%;
+            height: auto;
+            max-height: 70vh;
             object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
+            display: block;
         }
 
-        /* ==================== RIGHT BEIGE COLUMN (LINKS, ADDRESS & CONTACTS) ==================== */
-        .right-edge-strip {
-            min-height: 100vh;
-            background-color: #C4B39B;
-            padding: 50px 25px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-end;
-            text-align: right;
-            z-index: 3;
+        /* 4. CTA / ACTION LINK */
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto clamp(30px, 5vw, 50px) auto;
+            padding: 0 10px;
         }
 
-        .right-links {
-            display: flex;
-            flex-direction: column;
-            gap: 20px; 
-            align-items: flex-end;
-            width: 100%;
-            padding-top: 15px;
-        }
-
-        .nav-topic {
-            font-size: 1.1rem;
+        .cta-button {
+            display: inline-block;
+            padding: 12px 35px;
+            background-color: #000000;
+            color: #ffffff;
+            text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-decoration: none;
-            color: #FFFFFF;
-            transition: opacity 0.3s;
-            white-space: nowrap;
+            font-size: 0.95rem;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
-        .nav-topic:hover {
-            opacity: 0.7;
+        .cta-button:hover {
+            background-color: #333333;
+            transform: translateY(-2px);
         }
 
-        .footer-right-container {
-            width: 100%;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-            padding-top: 25px;
-            font-size: 1rem;
-            line-height: 1.6;
+        /* 5. FOOTER (CONTACT INFO & SHOP ADDRESS) */
+        footer {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #eeeeee;
+            font-size: 0.9rem;
+            color: #444444;
             letter-spacing: 1px;
+            margin-top: auto;
             display: flex;
             flex-direction: column;
-            gap: 20px; 
+            gap: 15px;
         }
 
-        .contact-label {
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.8);
+        .footer-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            line-height: 1.6;
+        }
+
+        .info-block strong {
             display: block;
-            margin-bottom: 3px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            color: #888888;
+            margin-bottom: 2px;
         }
 
-        /* RESPONSIVE MOBILE & TABLET ADJUSTMENTS */
-        @media (max-width: 1024px) {
-            .three-column-container {
-                grid-template-columns: 1fr;
-                min-height: auto;
-            }
+        .copyright {
+            font-size: 0.8rem;
+            color: #888888;
+            margin-top: 10px;
+        }
 
-            .left-edge-strip {
-                min-height: auto;
-                padding: 40px 20px 25px 20px;
-            }
-
-            .brand-name {
-                font-size: 2.2rem;
-                letter-spacing: 4px;
-                margin-bottom: 20px;
-            }
-
-            .intro-text {
-                font-size: 1.1rem;
-            }
-
-            .left-middle-content {
-                gap: 25px;
-            }
-
-            .middle-video-column {
-                grid-column: 1;
-                height: 50vh;
-                min-height: 350px;
-            }
-
-            .middle-video-column video {
-                position: relative;
-            }
-
-            .right-edge-strip {
-                min-height: auto;
-                padding: 35px 20px 40px 20px;
-                align-items: flex-start;
-                text-align: left;
+        /* 6. MOBILE SPECIFIC OVERRIDES */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+                gap: 15px;
             }
 
             .right-links {
-                align-items: flex-start;
-                flex-direction: row;
-                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-media {
+                max-height: 50vh;
+            }
+
+            .footer-info {
+                flex-direction: column;
                 gap: 15px;
-                padding-top: 0;
-                margin-bottom: 25px;
-            }
-
-            .nav-topic {
-                font-size: 0.95rem;
-            }
-
-            .footer-right-container {
-                text-align: left;
             }
         }
-    </style>
-</head>
-<body>
+    </style> 
+</head> 
+<body> 
 
-    <div class="three-column-container">
-        
-        <!-- PART 1: LEFT BEIGE COLUMN -->
-        <div class="left-edge-strip">
-            <a href="index.html" class="brand-name">Year of 25</a>
-            
-            <div class="left-middle-content">
-                <p class="intro-text">
-                    "Year of 25" represents more than just clothing; it's a lifestyle brand that celebrates the journey of self-discovery and personal transformation. The brand's identity is rooted in the idea that age 25 is a pivotal year in many people's lives. It's an age when individuals often experience significant changes, make important decisions, and embark on new adventures.
-                </p>
+    <!-- NAVIGATION -->
+    <nav class="navbar"> 
+        <a href="index.html" class="brand-name">Year of 25</a> 
+        <div class="right-links"> 
+            <a href="services.html" class="nav-topic">Our Services</a> 
+            <a href="view-our-work.html" class="nav-topic">View Our Work</a> 
+        </div> 
+    </nav> 
 
-                <section class="homepage-services">
-                    <h2 class="services-title">Services We Offer</h2>
-                    <ul class="services-list">
-                        <li>Outfit Customization</li>
-                        <li>Fashion Consultation</li>
-                        <li>Rent Your Outfit</li>
-                        <li>Bulk Orders</li>
-                    </ul>
-                </section>
-            </div>
-        </div>
-
-        <!-- PART 2: MIDDLE COLUMN (VIDEO) -->
-        <div class="middle-video-column">
-            <video autoplay loop muted playsinline>
+    <!-- MAIN HERO CONTENT -->
+    <main>
+        <div class="hero-container">
+            <!-- Video Hero Banner -->
+            <video class="hero-media" autoplay loop muted playsinline poster="images/bg1.jpeg">
                 <source src="images/fashion-video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+                <!-- Fallback image if video fails to load or play -->
+                <img src="images/bg1.jpeg" alt="Year of 25 Banner" class="hero-media">
             </video>
         </div>
 
-        <!-- PART 3: RIGHT BEIGE COLUMN (LINKS, CONTACTS & ADDRESS) -->
-        <div class="right-edge-strip">
-            <!-- Top: Main Links (Our Services, View Our Work, Shop) -->
-            <nav class="right-links">
-                <a href="services.html" class="nav-topic">Our Services</a>
-                <a href="view-our-work.html" class="nav-topic">View Our Work</a>
-                <a href="shop.html" class="nav-topic">Shop</a>
-            </nav>
+        <div class="hero-content">
+            <!-- Shop link substituted where Explore Collection was -->
+            <a href="shop.html" class="cta-button">Shop Collection</a>
+        </div>
+    </main>
 
-            <!-- Bottom: Contact Details & Shop Address -->
-            <div class="footer-right-container">
-                <div class="contact-block">
-                    <span class="contact-label">Our Contact</span>
-                    <div>yearoftwentyfive@gmail.com</div>
-                    
-                    <span class="contact-label" style="margin-top: 10px;">Phone Number</span>
-                    <div>+91 9955527562</div>
-                </div>
-
-                <div class="address-block">
-                    <span class="contact-label">Shop Address</span>
-                    <div>Year of 25 Design Studio Middle Lane, Dangratoli, Ranchi - 834001</div>
-                </div>
+    <!-- FOOTER WITH CONTACT INFO & SHOP ADDRESS -->
+    <footer>
+        <div class="footer-info">
+            <div class="info-block">
+                <strong>Our Contact</strong>
+                <div>yearoftwentyfive@gmail.com</div>
+                <div>+91 9955527562</div>
+            </div>
+            <div class="info-block">
+                <strong>Shop Address</strong>
+                <div>Year of 25 Design Studio Middle Lane, Dangratoli, Ranchi - 834001</div>
             </div>
         </div>
+        <p class="copyright">&copy; Year of 25. All Rights Reserved.</p>
+    </footer>
 
-    </div>
-
-</body>
+</body> 
 </html>
